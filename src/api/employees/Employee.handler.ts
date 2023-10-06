@@ -1,10 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import { Employee } from "./Employee.model";
+import { EmployeeDataAccess } from "./Employee.accessor";
 
-export const getAll = (req: Request, res: Response<Employee[]>, next: NextFunction) => {
+const dataAccess = new EmployeeDataAccess();
+
+export const getAll = async (req: Request, res: Response<Employee[]>, next: NextFunction) => {
   // Your logic here
   try {
-    const allEmployees: Employee[] = [];
+    const allEmployees: Employee[] | undefined = await dataAccess.getAllEmployees();
     res.json(allEmployees);
   } catch (error) {
     next(error);
@@ -19,7 +22,7 @@ export const getById = async (
 ) => {
   try {
     const id = req.params.id;
-    const response = undefined;
+    const empl: Employee | undefined = await dataAccess.getEmployeeById(id);
   } catch (error) {
     next(error);
   }
@@ -29,13 +32,13 @@ type ObjectWithId = {
   id: string;
 };
 
-export const addEmplyee = async (
+export const addEmployee = async (
   req: Request<{}, ObjectWithId, Employee>,
   res: Response<ObjectWithId>,
   next: NextFunction
 ) => {
   try {
-    const response = { id: "123" };
+    const response = await dataAccess.addEmployee(req.body);
   } catch (error) {
     next(error);
   }
