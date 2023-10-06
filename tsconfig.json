@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "moduleResolution": "Node16"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,13 @@
+@url = http://localhost:8000
+
+GET {{url}}/hello
+###
+GET {{url}}/employees
+###
+GET {{url}}/employees/all
+###
+GET {{url}}/employees/123
+###
+
+
+
