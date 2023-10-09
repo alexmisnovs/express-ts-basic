@@ -23,6 +23,7 @@ export const getById = async (
   try {
     const id = req.params.id;
     const empl: Employee | undefined = await dataAccess.getEmployeeById(id);
+    res.json(empl);
   } catch (error) {
     next(error);
   }
@@ -38,8 +39,12 @@ export const addEmployee = async (
   next: NextFunction
 ) => {
   try {
-    const response = await dataAccess.addEmployee(req.body);
+    const emplId = await dataAccess.addEmployee(req.body);
+    res.json({
+      id: emplId,
+    });
   } catch (error) {
+    console.log("error");
     next(error);
   }
 };
