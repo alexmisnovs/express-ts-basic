@@ -5,7 +5,7 @@ GET {{url}}/hello
 GET {{url}}/employees
 ###
 
-GET {{url}}/employees/20f3d3a6d42894d911c7ba6382ccf9da
+GET {{url}}/employees/eccc1aef2534734f677137965faed187
 ###
 
 POST {{url}}/employees/
@@ -13,11 +13,21 @@ Content-Type: application/json
 
 {
   "name": "Alex",
-  "position" : "Developer",
+  "position" : "Scrum Master",
   "salary" : 50000,
   "other" : "Stuff"
 }
-###
+### good request
 
+POST {{url}}/employees/
+Content-Type: application/json
+
+{
+  "name": "Alex",
+  "position" : "Intern",
+  "salary" : 50000,
+  "other" : "Stuff"
+}
+### bad request
 
 

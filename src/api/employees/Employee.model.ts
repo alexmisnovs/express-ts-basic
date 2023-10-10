@@ -1,8 +1,10 @@
 export enum Position {
   Manager = "Manager",
   HR = "HR",
-  Engineer = "Engineer",
+  Engineer = "Developer",
+  ScrumMaster = "Scrum Master",
 }
+// type Position = "Manager" | "HR" | "Developer";
 
 export type Employee = {
   id: string;

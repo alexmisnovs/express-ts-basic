@@ -1,5 +1,6 @@
 import { Router, Request, Response, json } from "express";
 import { addEmployee, getAll, getById } from "./Employee.handler";
+import { validateAsEmployee } from "./Validators";
 
 const employeeRouter = Router();
 employeeRouter.use(json());
@@ -8,6 +9,6 @@ employeeRouter.use(json());
 // });
 employeeRouter.get("/", getAll);
 employeeRouter.get("/:id", getById);
-employeeRouter.post("/", addEmployee);
+employeeRouter.post("/", validateAsEmployee, addEmployee);
 
 export default employeeRouter;

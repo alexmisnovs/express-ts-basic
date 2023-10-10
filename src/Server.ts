@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application, Request, Response, NextFunction } from "express";
 import employeeRouter from "./api/employees/Employee.routes";
 
 export class Server {
@@ -7,6 +7,13 @@ export class Server {
   public static startServer(): void {
     this.app.set("port", process.env.PORT || 8000);
     this.app.use("/employees", employeeRouter);
+
+    //  error middleware
+    this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+      console.log(err.stack);
+      res.send(err.message);
+      next();
+    });
 
     this.app.get("/hello", (req: Request, res: Response) => {
       res.status(200).send("Hello World");
