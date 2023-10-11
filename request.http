@@ -5,7 +5,7 @@ GET {{url}}/hello
 GET {{url}}/employees
 ###
 
-GET {{url}}/employees/eccc1aef2534734f677137965faed187
+GET {{url}}/employees/41fd11699102be67f51890037ad2ca25
 ###
 
 POST {{url}}/employees/
@@ -13,9 +13,8 @@ Content-Type: application/json
 
 {
   "name": "Alex",
-  "position" : "Scrum Master",
-  "salary" : 50000,
-  "other" : "Stuff"
+  "position" : "Manager",
+  "salary" : 100000
 }
 ### good request
 
@@ -31,3 +30,7 @@ Content-Type: application/json
 ### bad request
 
 
+GET {{url}}/reports/salaries
+### Reports salaries
+GET {{url}}/reports/salaries/total
+### Reports calculate total salaries
